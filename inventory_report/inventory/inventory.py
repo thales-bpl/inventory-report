@@ -32,16 +32,16 @@ class Inventory(ABC):
     def csv_to_dict(path):
         with open(path, encoding='utf-8') as file:
             data = list(csv.DictReader(file))
-            return data
+        return data
 
     @classmethod
     def json_to_dict(path):
         with open(path, encoding='utf-8') as file:
             data = json.load(file)
-            return data
+        return data
 
     @classmethod
     def xml_to_dict(path):
         with open(path, encoding='utf-8') as file:
             data = xmltodict.parse(file.read())
-            return data["dataset"]["record"]
+        return data["dataset"]["record"]
