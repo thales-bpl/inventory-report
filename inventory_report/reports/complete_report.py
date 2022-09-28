@@ -14,7 +14,7 @@ class CompleteReport(SimpleReport):
     def get_companies_stock(productList):
         company_report = "Produtos estocados por empresa:\n"
 
-        companies_list = super().get_companies_list(productList)
+        companies_list = [row["nome_da_empresa"] for row in productList]
         company_stock = Counter(companies_list)
         for company, quantity in company_stock.items():
             company_report += f"- {company}: {quantity}\n"
