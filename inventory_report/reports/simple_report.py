@@ -18,6 +18,9 @@ class SimpleReport:
         expire_dates = [row["data_de_validade"] for row in productList]
         return min(expire_dates)
 
-    def cmpny_bigger_stock(productList):
-        companies_list = [row["nome_da_empresa"] for row in productList]
+    def get_companies_list(productList):
+        return [row["nome_da_empresa"] for row in productList]
+
+    def cmpny_bigger_stock(self, productList):
+        companies_list = self.get_companies_list(productList)
         return max(set(companies_list), key=companies_list.count)
