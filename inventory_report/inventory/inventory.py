@@ -7,7 +7,7 @@ from inventory_report.reports.complete_report import CompleteReport
 
 
 class Inventory(ABC):
-    @classmethod
+    @staticmethod
     def import_data(path, type):
         report = Inventory.reader(path)
 
@@ -17,7 +17,7 @@ class Inventory(ABC):
         if type == 'completo':
             return CompleteReport.generate(report)
 
-    @classmethod
+    @staticmethod
     def reader(path):
         if ".csv" in path:
             report = Inventory.csv_to_dict(path)
@@ -28,19 +28,19 @@ class Inventory(ABC):
 
         return report
 
-    @classmethod
+    @staticmethod
     def csv_to_dict(path):
         with open(path, encoding='utf-8') as file:
             data = list(csv.DictReader(file))
         return data
 
-    @classmethod
+    @staticmethod
     def json_to_dict(path):
         with open(path, encoding='utf-8') as file:
             data = json.load(file)
         return data
 
-    @classmethod
+    @staticmethod
     def xml_to_dict(path):
         with open(path, encoding='utf-8') as file:
             data = xmltodict.parse(file.read())
